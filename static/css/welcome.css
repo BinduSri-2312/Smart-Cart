@@ -1,0 +1,202 @@
+
+/* =====================================
+   SMARTCART WELCOME PAGE
+===================================== */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Inter', 'Segoe UI', sans-serif;
+    background: #F5F3FF;
+    color: #312E40;
+}
+
+/* Main Container */
+
+.welcome-container {
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 30px 20px;
+    background: linear-gradient(135deg, #F5F3FF, #E9DFFF);
+}
+
+/* Welcome Card */
+
+.welcome-card {
+    width: 100%;
+    max-width: 900px;
+    padding: 50px 40px;
+    background: #FFFFFF;
+    border: 1px solid #E5E0F5;
+    border-radius: 20px;
+    text-align: center;
+    box-shadow: 0 15px 45px rgba(46, 16, 101, 0.10);
+}
+
+/* Brand */
+
+.welcome-card h1 {
+    color: #4C1D95;
+    font-size: 42px;
+    font-weight: 800;
+    letter-spacing: -1px;
+    margin-bottom: 8px;
+}
+
+.subtitle {
+    color: #78738A;
+    font-size: 15px;
+    margin-bottom: 40px;
+}
+
+/* Heading */
+
+.welcome-card h3 {
+    color: #2E1065;
+    font-size: 26px;
+    font-weight: 700;
+    margin-bottom: 8px;
+}
+
+.welcome-card > p:not(.subtitle) {
+    color: #78738A;
+    font-size: 14px;
+}
+
+/* Login Options */
+
+.login-options {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 25px;
+    margin-top: 35px;
+}
+
+/* Individual Cards */
+
+.login-box {
+    padding: 35px 25px;
+    background: #FAF9FF;
+    border: 1px solid #E5E0F5;
+    border-radius: 16px;
+    transition: all 0.3s ease;
+}
+
+.login-box:hover {
+    transform: translateY(-6px);
+    border-color: #C4B5FD;
+    box-shadow: 0 12px 30px rgba(76, 29, 149, 0.10);
+}
+
+/* Icons */
+
+.login-box > i {
+    font-size: 48px;
+    color: #8B5CF6;
+    margin-bottom: 15px;
+}
+
+/* Card Text */
+
+.login-box h4 {
+    color: #2E1065;
+    font-size: 21px;
+    font-weight: 700;
+    margin-bottom: 10px;
+}
+
+.login-box p {
+    color: #78738A;
+    font-size: 14px;
+    line-height: 1.6;
+    min-height: 45px;
+}
+
+/* Login Button */
+
+.login-btn {
+    display: block;
+    width: 100%;
+    padding: 13px 15px;
+    margin-top: 20px;
+    background: #4C1D95;
+    color: #FFFFFF;
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: 600;
+    border-radius: 9px;
+    transition: 0.3s ease;
+}
+
+.login-btn:hover {
+    background: #2E1065;
+    color: #FFFFFF;
+}
+
+/* Register Link */
+
+.register-link {
+    display: inline-block;
+    margin-top: 16px;
+    color: #4C1D95;
+    font-size: 14px;
+    font-weight: 600;
+    text-decoration: none;
+}
+
+.register-link:hover {
+    color: #8B5CF6;
+    text-decoration: underline;
+}
+
+/* Responsive Design */
+
+@media (max-width: 768px) {
+
+    .welcome-card {
+        padding: 35px 25px;
+    }
+
+    .welcome-card h1 {
+        font-size: 35px;
+    }
+
+    .login-options {
+        gap: 18px;
+    }
+
+}
+
+@media (max-width: 576px) {
+
+    .welcome-container {
+        padding: 15px;
+    }
+
+    .welcome-card {
+        padding: 30px 20px;
+    }
+
+    .welcome-card h1 {
+        font-size: 32px;
+    }
+
+    .welcome-card h3 {
+        font-size: 23px;
+    }
+
+    .login-options {
+        grid-template-columns: 1fr;
+    }
+
+    .login-box {
+        padding: 28px 20px;
+    }
+
+}

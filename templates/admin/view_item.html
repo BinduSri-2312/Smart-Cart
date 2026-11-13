@@ -1,0 +1,39 @@
+{% extends "admin/base.html" %}
+
+{% block title %}Product Details | SmartCart{% endblock %}
+
+{% block page_heading %}Product Details{% endblock %}
+
+{% block content %}
+
+<h2>Product Details</h2>
+
+<div class="card border-0 shadow-sm">
+    <div class="card-body p-4">
+
+        <img
+            src="{{ url_for('static', filename='uploads/product_images/' ~ product.image) }}"
+            width="200"
+            style="object-fit:cover; border-radius:10px;"
+            alt="{{ product.name }}"
+            class="mb-4">
+
+        <p><strong>Name:</strong> {{ product.name }}</p>
+
+        <p><strong>Description:</strong> {{ product.description }}</p>
+
+        <p><strong>Category:</strong> {{ product.category }}</p>
+
+        <p><strong>Price:</strong> ₹{{ product.price }}</p>
+
+        <br>
+
+        <a href="{{ url_for('item_list') }}"
+           class="btn btn-outline-secondary">
+            <i class="bi bi-arrow-left me-2"></i>Back to List
+        </a>
+
+    </div>
+</div>
+
+{% endblock %}

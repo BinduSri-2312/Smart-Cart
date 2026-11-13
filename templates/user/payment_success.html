@@ -1,0 +1,39 @@
+{% extends "user/base.html" %}
+
+{% block title %}Payment Successful | SmartCart{% endblock %}
+
+{% block content %}
+
+<div class="payment-success-page">
+
+    <div class="payment-success-card">
+
+        <div class="success-icon">
+            <i class="bi bi-check-circle-fill"></i>
+        </div>
+
+        <h2>Payment Successful!</h2>
+
+        <p>Your payment has been completed successfully.</p>
+
+        <div class="payment-details">
+            <p>
+                <strong>Payment ID:</strong>
+                {{ payment_id }}
+            </p>
+
+            <p>
+                <strong>Order ID:</strong>
+                {{ order_id }}
+            </p>
+        </div>
+
+        <a href="/user/products" class="continue-shopping-btn">
+            Continue Shopping
+        </a>
+
+    </div>
+
+</div>
+
+{% endblock %}

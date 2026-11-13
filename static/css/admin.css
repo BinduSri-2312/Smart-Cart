@@ -1,0 +1,1054 @@
+
+/* =========================================
+   SMARTCART ADMIN PANEL
+   Theme: Royal Purple + Lavender
+========================================= */
+
+/* 1. COLOR VARIABLES */
+:root {
+    --primary: #4C1D95;
+    --primary-light: #6D28D9;
+    --deep-purple: #2E1065;
+    --accent: #8B5CF6;
+    --lavender: #C4B5FD;
+    --light-lavender: #EDE9FE;
+    --background: #F5F3FF;
+    --surface: #FFFFFF;
+    --text: #312E40;
+    --muted: #78738A;
+    --border: #E5E0F5;
+
+    --success: #16A34A;
+    --danger: #DC2626;
+    --warning: #D97706;
+
+    --shadow: 0 5px 20px rgba(46, 16, 101, 0.08);
+    --radius: 12px;
+}
+
+/* 2. GLOBAL STYLES */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Inter', sans-serif;
+    background: var(--background);
+    color: var(--text);
+    font-size: 15px;
+}
+
+a {
+    text-decoration: none;
+    color: var(--primary);
+    transition: 0.3s ease;
+}
+
+a:hover {
+    color: var(--accent);
+}
+
+img {
+    max-width: 100%;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    color: var(--text);
+    font-weight: 700;
+}
+
+.text-muted {
+    color: var(--muted) !important;
+}
+
+
+/* =========================================
+   ADMIN AUTHENTICATION PAGES
+   Login, Signup, OTP, Forgot & Reset
+========================================= */
+
+.auth-page {
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 30px 15px;
+
+    background: linear-gradient(
+        120deg,
+        #2E1065 0%,
+        #4C1D95 40%,
+        #8B5CF6 72%,
+        #C4B5FD 100%
+    );
+}
+
+.auth-card {
+    width: 100%;
+    max-width: 480px;
+    padding: 32px 36px;
+
+    background: #FFFFFF;
+    border-radius: 18px;
+    border-top: 5px solid #C4B5FD;
+
+    box-shadow: 0 12px 35px rgba(46, 16, 101, 0.18);
+}
+
+/* Logo */
+
+.auth-logo {
+    text-align: center;
+    color: #4C1D95;
+    font-size: 29px;
+    font-weight: 800;
+    margin-bottom: 18px;
+    letter-spacing: -1px;
+}
+
+.auth-logo i {
+    margin-right: 8px;
+    color: #8B5CF6;
+}
+
+/* Headings */
+
+.auth-card h2 {
+    color: #4C1D95;
+    font-size: 24px;
+    font-weight: 750;
+    text-align: center;
+    margin-bottom: 8px;
+}
+
+.auth-card h3 {
+    color: #2E1065;
+    font-size: 21px;
+    text-align: center;
+    margin-bottom: 10px;
+}
+
+/* Description */
+
+.auth-card p {
+    color: #78738A;
+    text-align: center;
+    line-height: 1.6;
+    font-size: 14px;
+    margin-bottom: 22px;
+}
+
+/* Form Labels */
+
+.auth-card label {
+    color: #312E40;
+    font-size: 13px;
+    font-weight: 600;
+    margin-bottom: 7px;
+}
+
+/* Inputs */
+
+.auth-card .form-control,
+.auth-card .form-select {
+    width: 100%;
+    min-height: 45px;
+    padding: 10px 13px;
+
+    background: #FAF9FF;
+    border: 1px solid #E5E0F5;
+    border-radius: 8px;
+
+    font-size: 14px;
+    color: #312E40;
+}
+
+.auth-card .form-control:focus,
+.auth-card .form-select:focus {
+    background: #FFFFFF;
+    border-color: #8B5CF6;
+    box-shadow: 0 0 0 3px rgba(139, 92, 246, 0.12);
+    outline: none;
+}
+
+/* Form Spacing */
+
+.auth-card form .mb-3 {
+    margin-bottom: 15px !important;
+}
+
+/* Buttons */
+
+.auth-card .btn-primary {
+    width: 100%;
+    min-height: 45px;
+    padding: 10px;
+
+    background: #4C1D95;
+    border: none;
+    border-radius: 8px;
+
+    color: #FFFFFF;
+    font-size: 14px;
+    font-weight: 600;
+
+    transition: 0.3s ease;
+}
+
+.auth-card .btn-primary:hover {
+    background: #6D28D9;
+    transform: translateY(-1px);
+}
+
+/* Links */
+
+.auth-card a {
+    color: #4C1D95;
+    font-size: 13px;
+    font-weight: 600;
+    text-decoration: none;
+}
+
+.auth-card a:hover {
+    color: #8B5CF6;
+    text-decoration: underline;
+}
+
+.auth-links {
+    text-align: center;
+    margin-top: 18px;
+    color: #78738A;
+    font-size: 13px;
+}
+
+.auth-card small {
+    color: #78738A;
+}
+
+/* Mobile Responsive */
+
+@media (max-width: 576px) {
+
+    .auth-page {
+        padding: 20px 12px;
+        align-items: center;
+    }
+
+    .auth-card {
+        max-width: 100%;
+        padding: 25px 20px;
+        border-radius: 15px;
+    }
+
+    .auth-logo {
+        font-size: 26px;
+        margin-bottom: 15px;
+    }
+
+    .auth-card h2 {
+        font-size: 22px;
+    }
+
+    .auth-card h3 {
+        font-size: 20px;
+    }
+
+    .auth-card .form-control,
+    .auth-card .form-select {
+        min-height: 43px;
+        font-size: 14px;
+    }
+}
+
+
+/* 4. ADMIN LAYOUT */
+
+.admin-wrapper {
+    display: flex;
+    min-height: 100vh;
+}
+
+/* Sidebar */
+
+.sidebar {
+    width: 260px;
+    min-width: 260px;
+    background: var(--deep-purple);
+    color: white;
+    padding: 25px 18px;
+    display: flex;
+    flex-direction: column;
+}
+
+.sidebar-brand {
+    color: white;
+    font-size: 25px;
+    font-weight: 800;
+    padding: 10px 12px 30px;
+    border-bottom: 1px solid rgba(255,255,255,0.15);
+}
+
+.sidebar-brand i {
+    color: var(--lavender);
+    margin-right: 8px;
+}
+
+.sidebar-menu {
+    list-style: none;
+    padding: 25px 0;
+    margin: 0;
+}
+
+.sidebar-menu li {
+    margin-bottom: 8px;
+}
+
+.sidebar-menu a {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    color: #DDD6FE;
+    padding: 13px 15px;
+    border-radius: 9px;
+    font-size: 14px;
+    transition: 0.3s ease;
+}
+
+.sidebar-menu a:hover,
+.sidebar-menu a.active {
+    background: var(--accent);
+    color: white;
+}
+
+.sidebar-menu i {
+    font-size: 18px;
+}
+
+/* Main Content */
+
+.main-content {
+    flex: 1;
+    min-width: 0;
+    padding: 25px 30px;
+}
+
+/* Topbar */
+
+.topbar {
+    min-height: 65px;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    box-shadow: var(--shadow);
+    padding: 12px 22px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 30px;
+}
+
+.topbar-profile {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    color: var(--text);
+    font-weight: 600;
+}
+
+/* Page Heading */
+
+.page-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 15px;
+    margin-bottom: 25px;
+}
+
+.page-header h2 {
+    font-size: 25px;
+    font-weight: 700;
+    color: var(--deep-purple);
+    margin-bottom: 5px;
+}
+
+.page-header p {
+    color: var(--muted);
+    margin: 0;
+}
+
+/* 5. CARDS */
+
+.card {
+    background: var(--surface);
+    border: 1px solid var(--border) !important;
+    border-radius: var(--radius);
+    transition: 0.3s ease;
+}
+
+.card.shadow-sm {
+    box-shadow: var(--shadow) !important;
+}
+
+.card-body {
+    padding: 22px;
+}
+
+.card-title {
+    color: var(--deep-purple);
+    font-weight: 700;
+}
+
+.card:hover {
+    border-color: var(--lavender) !important;
+}
+
+/* Dashboard Cards */
+
+.stat-card {
+    padding: 22px;
+    border-radius: var(--radius);
+    background: var(--surface);
+    box-shadow: var(--shadow);
+    border-left: 4px solid var(--accent);
+}
+
+.stat-card h3 {
+    color: var(--primary);
+    font-size: 27px;
+    font-weight: 700;
+}
+
+.stat-card p {
+    color: var(--muted);
+}
+
+/* 6. BUTTONS */
+
+.btn {
+    border-radius: 8px;
+    padding: 9px 16px;
+    font-size: 14px;
+    font-weight: 600;
+    transition: 0.3s ease;
+}
+
+.btn-primary {
+    background: var(--primary);
+    border-color: var(--primary);
+    color: white;
+}
+
+.btn-primary:hover {
+    background: var(--accent);
+    border-color: var(--accent);
+    color: white;
+}
+
+.btn-outline-primary {
+    color: var(--primary);
+    border-color: var(--primary);
+}
+
+.btn-outline-primary:hover {
+    background: var(--primary);
+    border-color: var(--primary);
+    color: white;
+}
+
+.btn-outline-secondary {
+    color: var(--muted);
+    border-color: var(--border);
+}
+
+.btn-outline-secondary:hover {
+    background: var(--light-lavender);
+    border-color: var(--lavender);
+    color: var(--deep-purple);
+}
+
+.btn-outline-success {
+    color: var(--success);
+    border-color: var(--success);
+}
+
+.btn-outline-danger {
+    color: var(--danger);
+    border-color: var(--danger);
+}
+
+/* 7. FORMS */
+
+.form-label {
+    color: var(--text);
+    font-size: 14px;
+    font-weight: 600;
+    margin-bottom: 8px;
+}
+
+.form-control,
+.form-select {
+    min-height: 44px;
+    padding: 10px 13px;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    color: var(--text);
+    font-size: 14px;
+}
+
+.form-control:focus,
+.form-select:focus {
+    border-color: var(--accent);
+    box-shadow: 0 0 0 3px rgba(139, 92, 246, 0.12);
+}
+
+textarea.form-control {
+    min-height: 110px;
+    resize: vertical;
+}
+
+input[type="file"].form-control {
+    padding: 9px;
+}
+
+/* 8. PRODUCT TABLE */
+
+.table-responsive {
+    width: 100%;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 15px;
+    box-shadow: var(--shadow);
+}
+
+.table {
+    margin-bottom: 0;
+    color: var(--text);
+    vertical-align: middle;
+}
+
+.table thead th {
+    background: var(--deep-purple);
+    color: white;
+    font-size: 14px;
+    font-weight: 600;
+    padding: 15px 12px;
+    border: none;
+    white-space: nowrap;
+}
+
+.table tbody td {
+    padding: 13px 12px;
+    border-color: var(--border);
+    font-size: 14px;
+}
+
+.table tbody tr:hover {
+    background: var(--light-lavender);
+}
+
+.table img {
+    object-fit: cover;
+    border-radius: 8px;
+}
+
+/* 9. PRODUCT DETAILS */
+
+.product-details {
+    background: var(--surface);
+    padding: 25px;
+    border-radius: var(--radius);
+    box-shadow: var(--shadow);
+}
+
+.product-details img {
+    max-width: 250px;
+    border-radius: 12px;
+    margin-bottom: 20px;
+}
+
+.product-details p {
+    padding: 10px 0;
+    border-bottom: 1px solid var(--border);
+    color: var(--text);
+}
+
+/* 10. ADMIN PROFILE */
+
+.profile-card {
+    background: var(--surface);
+    padding: 25px;
+    border-radius: var(--radius);
+    box-shadow: var(--shadow);
+}
+
+.profile-image {
+    width: 130px;
+    height: 130px;
+    object-fit: cover;
+    border-radius: 50%;
+    border: 4px solid var(--lavender);
+    padding: 3px;
+}
+
+.profile-card h4 {
+    color: var(--deep-purple);
+    margin-top: 15px;
+}
+
+/* 11. FLASH MESSAGES */
+
+.alert {
+    border-radius: 9px;
+    padding: 13px 17px;
+    font-size: 14px;
+    margin-bottom: 18px;
+}
+
+.alert-success {
+    background: #DCFCE7;
+    border-color: #BBF7D0;
+    color: #166534;
+}
+
+.alert-danger {
+    background: #FEE2E2;
+    border-color: #FECACA;
+    color: #991B1B;
+}
+
+.alert-warning {
+    background: #FEF3C7;
+    border-color: #FDE68A;
+    color: #92400E;
+}
+
+.alert-info {
+    background: #EDE9FE;
+    border-color: #DDD6FE;
+    color: var(--deep-purple);
+}
+
+/* 12. BADGES */
+
+.badge {
+    font-weight: 600;
+    padding: 7px 11px;
+    border-radius: 20px;
+}
+
+/* 13. SEARCH AND FILTER */
+
+.search-section {
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+    margin-bottom: 20px;
+}
+
+.search-section .form-control,
+.search-section .form-select {
+    flex: 1;
+    min-width: 180px;
+}
+
+/* 14. FOOTER */
+
+.admin-footer {
+    margin-top: 35px;
+    padding: 18px 10px;
+    text-align: center;
+    color: var(--muted);
+    border-top: 1px solid var(--border);
+    font-size: 13px;
+}
+
+/* 15. SCROLLBAR */
+
+::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: var(--background);
+}
+
+::-webkit-scrollbar-thumb {
+    background: var(--lavender);
+    border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: var(--accent);
+}
+
+/* 16. RESPONSIVE DESIGN */
+
+@media (max-width: 992px) {
+
+    .sidebar {
+        width: 220px;
+        min-width: 220px;
+    }
+
+    .main-content {
+        padding: 20px;
+    }
+
+    .auth-card {
+        max-width: 550px;
+    }
+}
+
+@media (max-width: 768px) {
+
+    .admin-wrapper {
+        flex-direction: column;
+    }
+
+    .sidebar {
+        width: 100%;
+        min-width: 100%;
+        padding: 15px;
+    }
+
+    .sidebar-brand {
+        padding: 10px;
+        border-bottom: none;
+    }
+
+    .sidebar-menu {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+        padding: 10px 0;
+    }
+
+    .sidebar-menu li {
+        margin: 0;
+    }
+
+    .sidebar-menu a {
+        padding: 10px;
+    }
+
+    .main-content {
+        padding: 15px;
+    }
+
+    .topbar {
+        padding: 12px 15px;
+    }
+
+    .page-header {
+        align-items: flex-start;
+        flex-direction: column;
+    }
+
+    .auth-card {
+        padding: 35px 25px;
+    }
+}
+
+@media (max-width: 576px) {
+
+    .auth-page {
+        padding: 20px 12px;
+    }
+
+    .auth-card {
+        padding: 30px 20px;
+        border-radius: 16px;
+    }
+
+    .auth-logo {
+        font-size: 28px;
+    }
+
+    .auth-card h2 {
+        font-size: 24px;
+    }
+
+    .auth-card h3 {
+        font-size: 21px;
+    }
+
+    .main-content {
+        padding: 12px;
+    }
+
+    .topbar {
+        flex-wrap: wrap;
+        gap: 10px;
+    }
+
+    .page-header h2 {
+        font-size: 21px;
+    }
+
+    .table-responsive {
+        padding: 8px;
+    }
+
+    .card-body {
+        padding: 17px;
+    }
+
+    .btn {
+        font-size: 13px;
+    }
+}
+/* =====================================
+   ADMIN RESPONSIVE DESIGN
+===================================== */
+
+/* Tablets and small laptops */
+@media (max-width: 992px) {
+
+    .admin-wrapper {
+        width: 100%;
+    }
+
+    .sidebar {
+        width: 220px;
+    }
+
+    .main-content {
+        margin-left: 220px;
+        width: calc(100% - 220px);
+        padding: 20px;
+    }
+
+    .dashboard-cards {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .admin-content {
+        padding: 20px;
+    }
+
+    .table-responsive {
+        overflow-x: auto;
+    }
+}
+
+/* Mobile and tablets */
+@media (max-width: 768px) {
+
+    /* Sidebar */
+    .sidebar {
+        position: fixed;
+        left: -260px;
+        top: 0;
+        width: 250px;
+        height: 100vh;
+        z-index: 1050;
+        transition: left 0.3s ease;
+    }
+
+    .sidebar.active {
+        left: 0;
+    }
+
+    /* Main content */
+    .main-content {
+        margin-left: 0;
+        width: 100%;
+        padding: 15px;
+    }
+
+    /* Topbar */
+    .topbar {
+        padding: 12px 15px;
+        flex-wrap: wrap;
+        gap: 10px;
+    }
+
+    .topbar h1 {
+        font-size: 20px;
+    }
+
+    /* Dashboard cards */
+    .dashboard-cards {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 15px;
+    }
+
+    .dashboard-card {
+        padding: 15px;
+    }
+
+    /* Forms */
+    .form-container {
+        width: 100%;
+        padding: 20px;
+    }
+
+    /* Tables */
+    .table-responsive {
+        width: 100%;
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+    }
+
+    table {
+        min-width: 650px;
+    }
+
+    /* Profile */
+    .profile-container {
+        flex-direction: column;
+    }
+
+    .profile-card {
+        width: 100%;
+    }
+
+    /* Buttons */
+    .btn {
+        font-size: 14px;
+    }
+}
+
+/* Small mobile devices */
+@media (max-width: 480px) {
+
+    .main-content {
+        padding: 12px;
+    }
+
+    .topbar {
+        padding: 10px;
+    }
+
+    .topbar h1 {
+        font-size: 18px;
+    }
+
+    .dashboard-cards {
+        grid-template-columns: 1fr;
+    }
+
+    .dashboard-card {
+        padding: 14px;
+    }
+
+    .form-container {
+        padding: 15px;
+    }
+
+    .form-control,
+    .form-select {
+        font-size: 14px;
+    }
+
+    .btn {
+        width: 100%;
+        margin-bottom: 8px;
+    }
+
+    .auth-card {
+        width: 100%;
+        padding: 22px 18px;
+    }
+
+    .profile-card {
+        padding: 15px;
+    }
+}
+
+
+/* =====================================
+   COMPACT ADMIN LOGIN PAGE
+===================================== */
+
+.admin-login-page {
+    min-height: calc(100vh - 70px);
+    padding: 25px 15px;
+}
+
+.admin-login-card {
+    width: 100%;
+    max-width: 440px;
+    padding: 30px 35px;
+    border-radius: 18px;
+}
+
+/* Logo */
+
+.admin-login-card .auth-logo {
+    font-size: 29px;
+    margin-bottom: 18px;
+}
+
+/* Heading */
+
+.admin-login-card h2 {
+    font-size: 24px;
+    margin-bottom: 8px;
+}
+
+.admin-login-card p {
+    font-size: 14px;
+    margin-bottom: 22px;
+}
+
+/* Form */
+
+.admin-login-card .mb-3 {
+    margin-bottom: 16px !important;
+}
+
+.admin-login-card .form-control {
+    min-height: 45px;
+    padding: 10px 13px;
+    font-size: 14px;
+}
+
+/* Forgot Password */
+
+.admin-login-card form a {
+    font-size: 13px;
+}
+
+/* Login Button */
+
+.admin-login-card .btn-primary {
+    min-height: 45px;
+    padding: 10px;
+    font-size: 14px;
+}
+
+/* Signup Link */
+
+.admin-login-card .auth-links {
+    margin-top: 18px;
+    font-size: 13px;
+}
+
+/* Mobile */
+
+@media (max-width: 576px) {
+    .admin-login-page {
+        min-height: calc(100vh - 60px);
+        padding: 20px 15px;
+    }
+
+    .admin-login-card {
+        max-width: 100%;
+        padding: 25px 20px;
+    }
+
+    .admin-login-card .auth-logo {
+        font-size: 26px;
+    }
+
+    .admin-login-card h2 {
+        font-size: 22px;
+    }
+}

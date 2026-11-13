@@ -1,0 +1,129 @@
+
+{% extends "user/base.html" %}
+
+{% block title %}Delivery Address | SmartCart{% endblock %}
+
+{% block content %}
+
+<div class="address-page">
+    <div class="address-container">
+
+        <div class="address-heading">
+            <h2>Delivery Address</h2>
+            <p>Select a saved address or add a new one.</p>
+        </div>
+
+        {% if saved_addresses %}
+
+        <div class="address-card mb-4">
+
+            <h4>Previously Saved Addresses</h4>
+
+            {% for addr in saved_addresses %}
+
+            <div class="saved-address-card">
+
+                <h5>{{ addr.full_name }}</h5>
+
+                <p>{{ addr.phone }}</p>
+                <p>{{ addr.address }}</p>
+                <p>
+                    {{ addr.city }}, {{ addr.state }} -
+                    {{ addr.pincode }}
+                </p>
+
+                <form method="POST" action="/user/select-address">
+
+                    <input type="hidden"
+                           name="address_id"
+                           value="{{ addr.address_id }}">
+
+                    <button type="submit" class="place-order-btn">
+                        Deliver to this Address
+                    </button>
+
+                </form>
+
+            </div>
+
+            {% endfor %}
+
+        </div>
+
+        {% endif %}
+
+        <div class="address-card">
+
+            <h4>
+                <i class="bi bi-geo-alt"></i>
+                Add a New Address
+            </h4>
+
+            <form method="POST" action="/user/save-address">
+
+                <div class="mb-3">
+                    <label class="form-label">Full Name</label>
+                    <input type="text" name="full_name"
+                           class="form-control" required>
+                </div>
+
+                <div class="mb-3">
+                    <label class="form-label">Phone Number</label>
+                    <input type="tel" name="phone"
+                           class="form-control"
+                           pattern="[0-9]{10}"
+                           maxlength="10" required>
+                </div>
+
+                <div class="mb-3">
+                    <label class="form-label">Email Address</label>
+                    <input type="email" name="email"
+                           class="form-control" required>
+                </div>
+
+                <div class="mb-3">
+                    <label class="form-label">House No / Street Address</label>
+                    <textarea name="address" class="form-control"
+                              rows="3" required></textarea>
+                </div>
+
+                <div class="row">
+
+                    <div class="col-md-6 mb-3">
+                        <label class="form-label">City</label>
+                        <input type="text" name="city"
+                               class="form-control" required>
+                    </div>
+
+                    <div class="col-md-6 mb-3">
+                        <label class="form-label">State</label>
+                        <input type="text" name="state"
+                               class="form-control" required>
+                    </div>
+
+                </div>
+
+                <div class="mb-3">
+                    <label class="form-label">PIN Code</label>
+                    <input type="text" name="pincode"
+                           class="form-control"
+                           pattern="[0-9]{6}"
+                           maxlength="6" required>
+                </div>
+
+                <button type="submit" class="place-order-btn">
+                    Save New Address & Continue
+                </button>
+
+            </form>
+
+        </div>
+
+        <div class="text-center mt-3">
+            <a href="/user/cart" class="back-cart">Back to Cart</a>
+        </div>
+
+    </div>
+</div>
+
+{% endblock %}

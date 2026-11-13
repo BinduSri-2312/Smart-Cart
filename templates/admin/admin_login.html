@@ -1,0 +1,65 @@
+
+{% extends "admin/base.html" %}
+
+{% block title %}Admin Login | SmartCart{% endblock %}
+
+{% block auth_content %}
+
+<div class="auth-page admin-login-page">
+
+    <div class="auth-card admin-login-card">
+
+        <div class="auth-logo">
+            <i class="bi bi-bag-heart-fill"></i>
+            SmartCart
+        </div>
+
+        <h2>Admin Login</h2>
+
+        <p>Welcome back! Login to manage your store.</p>
+
+        <form method="POST" action="{{ url_for('admin_login') }}">
+
+            <div class="mb-3">
+                <label class="form-label">Email Address</label>
+
+                <input type="email"
+                       name="email"
+                       class="form-control"
+                       placeholder="Enter your email"
+                       required>
+            </div>
+
+            <div class="mb-3">
+                <label class="form-label">Password</label>
+
+                <input type="password"
+                       name="password"
+                       class="form-control"
+                       placeholder="Enter your password"
+                       required>
+            </div>
+
+            <div class="text-end mb-3">
+                <a href="{{ url_for('forgot_password') }}">
+                    Forgot Password?
+                </a>
+            </div>
+
+            <button type="submit" class="btn btn-primary w-100">
+                Login
+                <i class="bi bi-arrow-right ms-2"></i>
+            </button>
+
+        </form>
+
+        <div class="auth-links">
+            Don't have an account?
+            <a href="{{ url_for('admin_signup') }}">Sign Up</a>
+        </div>
+
+    </div>
+
+</div>
+
+{% endblock %}

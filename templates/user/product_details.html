@@ -1,0 +1,46 @@
+{% extends "user/base.html" %}
+
+{% block title %}{{ product.name }} | SmartCart{% endblock %}
+
+{% block content %}
+
+<div class="product-view-page">
+
+    <div class="product-view-card">
+
+        <div class="product-view-image">
+            <img src="{{ url_for('static', filename='uploads/product_images/' ~ product.image) }}"
+                alt="{{ product.name }}">
+        </div>
+
+        <div class="product-view-info">
+
+            <h2>{{ product.name }}</h2>
+
+            <p class="description">
+                <strong>Description:</strong><br>
+                {{ product.description }}
+            </p>
+
+            <span class="category">
+                {{ product.category }}
+            </span>
+
+            <p class="price">
+                ₹{{ product.price }}
+            </p>
+
+            <a href="/user/products" class="back-btn">
+                <i class="bi bi-arrow-left me-2"></i>Back to Products
+            </a>
+            <a href="/user/add-to-cart/{{ product.product_id }}" class="add-cart-btn">
+                <i class="bi bi-cart-plus"></i>
+                Add to Cart
+            </a>
+        </div>
+
+    </div>
+
+</div>
+
+{% endblock %}

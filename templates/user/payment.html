@@ -1,0 +1,85 @@
+{% extends "user/base.html" %}
+
+{% block title %}Payment | SmartCart{% endblock %}
+
+{% block content %}
+
+<div class="payment-page">
+
+    <div class="payment-card">
+
+        <div class="payment-icon">
+            <i class="bi bi-credit-card"></i>
+        </div>
+
+        <h2>Complete Your Payment</h2>
+
+        <p class="payment-description">
+            Review your order amount and proceed with secure payment.
+        </p>
+
+        <div class="payment-amount">
+            <span>Total Amount</span>
+            <h3>₹{{ amount }}</h3>
+        </div>
+
+        <button type="button" id="rzp-button" class="pay-now-btn">
+            <i class="bi bi-lock-fill"></i> Pay Now
+        </button>
+
+        <p class="secure-payment">
+            <i class="bi bi-shield-check"></i>
+            Secure payment powered by Razorpay
+        </p>
+
+    </div>
+
+</div>
+
+<script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+
+<script>
+var options = {
+    "key": "{{ key_id }}",
+    "amount": "{{ amount * 100 }}",
+    "currency": "INR",
+    "name": "SmartCart",
+    "description": "Order Payment",
+    "order_id": "{{ order_id }}",
+
+    "handler": function (response) {
+
+        var form = document.createElement("form");
+        form.method = "POST";
+        form.action = "/verify-payment";
+
+        var fields = {
+            razorpay_payment_id: response.razorpay_payment_id,
+            razorpay_order_id: response.razorpay_order_id,
+            razorpay_signature: response.razorpay_signature
+        };
+
+        for (var name in fields) {
+            var input = document.createElement("input");
+            input.type = "hidden";
+            input.name = name;
+            input.value = fields[name];
+            form.appendChild(input);
+        }
+
+        document.body.appendChild(form);
+        form.submit();
+    },
+
+    "prefill": {}
+};
+
+var rzp = new Razorpay(options);
+
+document.getElementById('rzp-button').onclick = function(e) {
+    rzp.open();
+    e.preventDefault();
+};
+</script>
+
+{% endblock %}

@@ -1,0 +1,78 @@
+{% extends "user/base.html" %}
+
+{% block title %}Order Confirmed | SmartCart{% endblock %}
+
+{% block content %}
+
+<div class="order-success-page">
+
+    <div class="order-success-card">
+
+        <div class="text-center">
+            <i class="bi bi-check-circle-fill success-icon"></i>
+
+            <h2>Your Order is Confirmed!</h2>
+
+            <p>Thank you for shopping with SmartCart.</p>
+        </div>
+
+        <hr>
+
+        <h5>Order Details</h5>
+
+        <p><strong>Order ID:</strong> {{ order.order_id }}</p>
+        <p><strong>Payment ID:</strong> {{ order.razorpay_payment_id }}</p>
+        <p><strong>Amount Paid:</strong> ₹{{ order.amount }}</p>
+        <p><strong>Payment Status:</strong> {{ order.payment_status }}</p>
+        <p><strong>Order Date:</strong> {{ order.created_at }}</p>
+
+        <hr>
+
+        <h5>Purchased Products</h5>
+
+        <div class="table-responsive">
+            <table class="table table-bordered order-success-table">
+                <thead>
+                    <tr>
+                        <th>Product</th>
+                        <th>Quantity</th>
+                        <th>Price</th>
+                        <th>Total</th>
+                    </tr>
+                </thead>
+
+                <tbody>
+                    {% for item in items %}
+                    <tr>
+                        <td>{{ item.product_name }}</td>
+                        <td>{{ item.quantity }}</td>
+                        <td>₹{{ item.price }}</td>
+                        <td>₹{{ item.price * item.quantity }}</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+
+        <div class="order-success-actions">
+
+            <a href="/user/products" class="continue-shopping-btn">
+                Continue Shopping
+            </a>
+
+            <a href="/user/my-orders" class="view-orders-btn">
+                View My Orders
+            </a>
+
+            <a href="/user/download-invoice/{{ order.order_id }}"
+               class="download-invoice-btn">
+                <i class="bi bi-download"></i> Download Invoice (PDF)
+            </a>
+
+        </div>
+
+    </div>
+
+</div>
+
+{% endblock %}

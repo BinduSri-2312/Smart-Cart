@@ -1,0 +1,54 @@
+{% extends "user/base.html" %}
+
+{% block title %}User Registration | SmartCart{% endblock %}
+
+{% block content %}
+
+<div class="user-auth-page">
+
+    <div class="user-auth-card">
+
+        <div class="user-auth-logo">
+            <i class="bi bi-bag-heart-fill"></i>
+            SmartCart
+        </div>
+
+        <h2>User Registration</h2>
+
+        <form method="POST" action="/user-register">
+
+            <label>Name:</label>
+            <input type="text"
+                   name="name"
+                   class="form-control"
+                   placeholder="Enter your name"
+                   required>
+
+            <label>Email:</label>
+            <input type="email"
+                   name="email"
+                   class="form-control"
+                   placeholder="Enter your email"
+                   required>
+
+            <label>Password:</label>
+            <input type="password"
+                   name="password"
+                   class="form-control"
+                   placeholder="Create your password"
+                   required>
+
+            <button type="submit">Register</button>
+
+        </form>
+
+        <div class="user-auth-links">
+            Already have an account?
+            <a href="/user-login">Login</a>
+        </div>
+
+    </div>
+
+</div>
+
+{% endblock %}

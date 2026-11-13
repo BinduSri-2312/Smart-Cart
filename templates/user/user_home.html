@@ -1,0 +1,40 @@
+{% extends "user/base.html" %}
+
+{% block title %}User Dashboard | SmartCart{% endblock %}
+
+{% block content %}
+
+<div class="user-home">
+
+    <div class="user-hero">
+
+        <div class="user-hero-content">
+
+            <h1>Welcome, {{ user_name }}!</h1>
+
+            <p>
+                Welcome to SmartCart. Explore our products and find
+                everything you need in one place.
+            </p>
+
+            <a href="/user/products" class="hero-btn">
+                <i class="bi bi-bag me-2"></i>Browse Products
+            </a>
+
+            <br><br>
+
+            <a href="/user-logout" class="hero-btn">
+                <i class="bi bi-box-arrow-right me-2"></i>Logout
+            </a>
+
+        </div>
+
+        <div class="user-hero-icon">
+            <i class="bi bi-bag-heart-fill"></i>
+        </div>
+
+    </div>
+
+</div>
+
+{% endblock %}

@@ -1,0 +1,130 @@
+{% extends "admin/base.html" %}
+
+{% block title %}Admin Dashboard | SmartCart{% endblock %}
+
+{% block page_heading %}Dashboard{% endblock %}
+
+{% block content %}
+
+<div class="page-header">
+    <div>
+        <h2>Welcome, {{ admin_name }}!</h2>
+        <p class="text-muted">
+            Manage your SmartCart store from one place.
+        </p>
+    </div>
+    <span class="badge rounded-pill px-3 py-2"
+          style="background:#EDE9FE; color:#4C1D95;">
+        <i class="bi bi-shield-check me-1"></i> Admin Panel
+    </span>
+</div>
+
+<!-- Welcome Card -->
+<div class="card border-0 shadow-sm mb-4"
+     style="background:linear-gradient(120deg, #4C1D95, #7C3AED); color:white;">
+    <div class="card-body p-4">
+        <div class="row align-items-center">
+            <div class="col-md-8">
+                <h3 class="mb-2">Welcome to SmartCart</h3>
+                <p class="mb-0">
+                    Manage products, update your profile and keep your store organized.
+                </p>
+            </div>
+            <div class="col-md-4 text-md-end mt-3 mt-md-0">
+                <i class="bi bi-shop-window"
+                   style="font-size:75px; opacity:0.8;"></i>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Dashboard Cards -->
+<div class="row g-4">
+
+    <!-- Add Product -->
+    <div class="col-md-6 col-xl-4">
+        <div class="card border-0 shadow-sm h-100">
+            <div class="card-body p-4">
+                <div class="mb-3">
+                    <i class="bi bi-plus-circle-fill"
+                       style="font-size:35px; color:#7C3AED;"></i>
+                </div>
+                <h5 class="card-title">Add Product</h5>
+                <p class="text-muted">
+                    Add new products with descriptions, prices, categories and images.
+                </p>
+                <a href="{{ url_for('add_item_page') }}"
+                   class="btn btn-primary">
+                    Add Product <i class="bi bi-arrow-right ms-2"></i>
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <!-- View Products -->
+    <div class="col-md-6 col-xl-4">
+        <div class="card border-0 shadow-sm h-100">
+            <div class="card-body p-4">
+                <div class="mb-3">
+                    <i class="bi bi-box-seam-fill"
+                       style="font-size:35px; color:#7C3AED;"></i>
+                </div>
+                <h5 class="card-title">Manage Products</h5>
+                <p class="text-muted">
+                    View your product list, update product details and remove products.
+                </p>
+                <a href="{{ url_for('item_list') }}"
+                   class="btn btn-primary">
+                    View Products <i class="bi bi-arrow-right ms-2"></i>
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Admin Profile -->
+    <div class="col-md-6 col-xl-4">
+        <div class="card border-0 shadow-sm h-100">
+            <div class="card-body p-4">
+                <div class="mb-3">
+                    <i class="bi bi-person-circle"
+                       style="font-size:35px; color:#7C3AED;"></i>
+                </div>
+                <h5 class="card-title">My Profile</h5>
+                <p class="text-muted">
+                    View and update your administrator account information.
+                </p>
+                <a href="{{ url_for('admin_profile') }}"
+                   class="btn btn-primary">
+                    View Profile <i class="bi bi-arrow-right ms-2"></i>
+                </a>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+<!-- Quick Actions -->
+<div class="card border-0 shadow-sm mt-4">
+    <div class="card-body p-4">
+        <h5 class="mb-3">Quick Actions</h5>
+
+        <div class="d-flex flex-wrap gap-2">
+            <a href="{{ url_for('add_item_page') }}"
+               class="btn btn-outline-primary">
+                <i class="bi bi-plus-lg me-2"></i>Add New Product
+            </a>
+
+            <a href="{{ url_for('item_list') }}"
+               class="btn btn-outline-primary">
+                <i class="bi bi-list-ul me-2"></i>Product List
+            </a>
+
+            <a href="{{ url_for('admin_profile') }}"
+               class="btn btn-outline-primary">
+                <i class="bi bi-person me-2"></i>My Account
+            </a>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

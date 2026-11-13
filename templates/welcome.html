@@ -1,0 +1,49 @@
+{% extends "base.html" %}
+
+{% block title %}Welcome | SmartCart{% endblock %}
+
+{% block content %}
+
+<div class="welcome-container">
+
+    <div class="welcome-card">
+
+        <h1>SmartCart</h1>
+        <p class="subtitle">Your Smart Shopping Destination</p>
+
+        <h3>Welcome!</h3>
+        <p>Select your account type to continue.</p>
+
+        <div class="login-options">
+
+            <div class="login-box">
+                <i class="bi bi-shield-lock"></i>
+                <h4>Admin</h4>
+                <p>Manage products and store operations.</p>
+
+                <a href="/admin-login" class="login-btn">
+                    Admin Login
+                </a>
+            </div>
+
+            <div class="login-box">
+                <i class="bi bi-person-circle"></i>
+                <h4>Customer</h4>
+                <p>Explore products and manage your orders.</p>
+
+                <a href="/user-login" class="login-btn">
+                    User Login
+                </a>
+
+                <a href="/user-register" class="register-link">
+                    Create Account
+                </a>
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+{% endblock %}

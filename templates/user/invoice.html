@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>SmartCart Invoice</title>
+</head>
+<body>
+
+<div class="invoice-box">
+
+    <div class="invoice-header">
+        <h1>SmartCart</h1>
+        <h2>INVOICE</h2>
+
+        <p><strong>Order ID:</strong> {{ order.order_id }}</p>
+        <p><strong>Date:</strong> {{ order.created_at }}</p>
+    </div>
+
+    <hr>
+
+    <h3>Customer Details</h3>
+    <p><strong>User ID:</strong> {{ order.user_id }}</p>
+
+    <h3>Delivery Address</h3>
+
+    {% if address %}
+        <p><strong>Name:</strong> {{ address.full_name }}</p>
+        <p><strong>Phone:</strong> {{ address.phone }}</p>
+        <p><strong>Email:</strong> {{ address.email }}</p>
+        <p><strong>Address:</strong> {{ address.address }}</p>
+        <p><strong>City:</strong> {{ address.city }}</p>
+        <p><strong>State:</strong> {{ address.state }}</p>
+        <p><strong>Pincode:</strong> {{ address.pincode }}</p>
+    {% endif %}
+
+    <h3>Order Items</h3>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Product</th>
+                <th>Quantity</th>
+                <th>Price (₹)</th>
+            </tr>
+        </thead>
+
+        <tbody>
+            {% for it in items %}
+            <tr>
+                <td>{{ it.product_name }}</td>
+                <td>{{ it.quantity }}</td>
+                <td>₹{{ "%.2f"|format(it.price|float) }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+    <h3 class="total">
+        Grand Total: ₹{{ "%.2f"|format(order.amount|float) }}
+    </h3>
+
+    <hr>
+
+    <p class="thank-you">Thank you for shopping with SmartCart!</p>
+
+</div>
+
+</body>
+</html>

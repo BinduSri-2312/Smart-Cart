@@ -1,0 +1,49 @@
+{% extends "admin/base.html" %}
+
+{% block title %}Verify OTP | SmartCart{% endblock %}
+
+{% block auth_content %}
+
+<div class="auth-page">
+    <div class="auth-card">
+
+        <h2>SmartCart</h2>
+
+        <h3>Verify OTP</h3>
+
+        <p>Enter the OTP sent to your registered email and create your password.</p>
+
+        <form method="POST" action="/verify-otp">
+
+            <div class="mb-3">
+                <label for="otp" class="form-label">Enter OTP:</label>
+                <input
+                    type="text"
+                    id="otp"
+                    name="otp"
+                    class="form-control"
+                    placeholder="Enter your OTP"
+                    required>
+            </div>
+
+            <div class="mb-4">
+                <label for="password" class="form-label">Create Password:</label>
+                <input
+                    type="password"
+                    id="password"
+                    name="password"
+                    class="form-control"
+                    placeholder="Create your password"
+                    required>
+            </div>
+
+            <button type="submit" class="btn btn-primary w-100">
+                Verify & Register
+            </button>
+
+        </form>
+
+    </div>
+</div>
+
+{% endblock %}

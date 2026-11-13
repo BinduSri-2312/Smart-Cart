@@ -1,0 +1,124 @@
+{% extends "admin/base.html" %}
+
+{% block title %}All Products | SmartCart{% endblock %}
+
+{% block page_heading %}Product List{% endblock %}
+
+{% block content %}
+
+<h2>Product List</h2>
+
+<a href="{{ url_for('add_item_page') }}" class="btn btn-primary mb-3">
+    Add New Product
+</a>
+
+<!-- Search Form -->
+<form method="GET" action="{{ url_for('item_list') }}" class="mb-3">
+    <div class="d-flex gap-2">
+        <input
+            type="text"
+            name="search"
+            class="form-control"
+            placeholder="Search product..."
+            value="{{ request.args.get('search', '') }}"
+        >
+        <button type="submit" class="btn btn-primary">
+            Search
+        </button>
+    </div>
+</form>
+
+<!-- Category Filter -->
+<form method="GET" action="{{ url_for('item_list') }}" class="mb-4">
+    <div class="d-flex gap-2">
+        <select name="category" class="form-select">
+            <option value="">All Categories</option>
+
+            {% for cat in categories %}
+            <option value="{{ cat.category }}"
+                {% if request.args.get('category') == cat.category %}selected{% endif %}>
+                {{ cat.category }}
+            </option>
+            {% endfor %}
+        </select>
+
+        <button type="submit" class="btn btn-primary">
+            Filter
+        </button>
+    </div>
+</form>
+
+<!-- Product Table -->
+<div class="table-responsive">
+    <table class="table table-bordered table-hover align-middle text-center">
+
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Image</th>
+                <th>Name</th>
+                <th>Category</th>
+                <th>Price</th>
+                <th>View</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+
+        <tbody>
+            {% for product in products %}
+            <tr>
+                <td>{{ product.product_id }}</td>
+
+                <td>
+                    <img
+                        src="{{ url_for('static', filename='uploads/product_images/' ~ product.image) }}"
+                        width="70"
+                        height="70"
+                        style="object-fit: cover; border-radius: 8px;"
+                        alt="{{ product.name }}"
+                    >
+                </td>
+
+                <td>{{ product.name }}</td>
+                <td>{{ product.category }}</td>
+                <td>₹{{ product.price }}</td>
+
+                <td>
+                    <a href="{{ url_for('view_item', item_id=product.product_id) }}"
+                       class="btn btn-sm btn-outline-primary">
+                        View
+                    </a>
+                </td>
+
+                <td>
+                    <a href="{{ url_for('update_item_page', item_id=product.product_id) }}"
+                       class="btn btn-sm btn-outline-success">
+                        Edit
+                    </a>
+
+                    <a href="{{ url_for('delete_item', item_id=product.product_id) }}"
+                       class="btn btn-sm btn-outline-danger"
+                       onclick="return confirm('Are you sure you want to delete this product?')">
+                        Delete
+                    </a>
+                </td>
+            </tr>
+
+            {% else %}
+            <tr>
+                <td colspan="7" class="text-muted py-4">
+                    No products found.
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+
+    </table>
+</div>
+
+<a href="{{ url_for('admin_dashboard') }}"
+   class="btn btn-outline-secondary mt-3">
+    Back to Dashboard
+</a>
+
+{% endblock %}

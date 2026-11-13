@@ -1,0 +1,200 @@
+
+{% extends "user/base.html" %}
+
+{% block title %}My Cart | SmartCart{% endblock %}
+
+{% block content %}
+
+<div class="cart-page">
+
+    <div class="cart-container">
+
+        <div class="cart-heading">
+            <div>
+                <h2>My Shopping Cart</h2>
+                <p>Review your products before checkout.</p>
+            </div>
+
+            <a href="/user/products" class="continue-shopping">
+                <i class="bi bi-arrow-left"></i> Continue Shopping
+            </a>
+        </div>
+
+        {% if not cart %}
+
+            <div class="empty-cart">
+                <i class="bi bi-cart-x"></i>
+                <h3>Your Cart is Empty</h3>
+                <p>You haven't added any products yet.</p>
+                <a href="/user/products" class="cart-btn">
+                    Shop Now
+                </a>
+            </div>
+
+        {% else %}
+
+            <form method="POST" action="/user/checkout" id="cartForm">
+
+                <div class="cart-table-wrapper">
+
+                    <table class="cart-table">
+
+                        <thead>
+                            <tr>
+                                <th>Select</th>
+                                <th>Product</th>
+                                <th>Price</th>
+                                <th>Quantity</th>
+                                <th>Total</th>
+                                <th>Action</th>
+                            </tr>
+                        </thead>
+
+                        <tbody>
+
+                            {% for pid, item in cart.items() %}
+
+                            <tr>
+
+                                <td>
+                                    <input
+                                        type="checkbox"
+                                        name="selected_products"
+                                        value="{{ pid }}"
+                                        class="product-checkbox"
+                                        data-price="{{ item.price }}"
+                                        data-quantity="{{ item.quantity }}"
+                                    >
+                                </td>
+
+                                <td>
+                                    <div class="cart-product">
+
+                                        <img
+                                            src="/static/uploads/product_images/{{ item.image }}"
+                                            alt="{{ item.name }}"
+                                        >
+
+                                        <span>{{ item.name }}</span>
+
+                                    </div>
+                                </td>
+
+                                <td>₹{{ item.price }}</td>
+
+                                <td>
+                                    <div class="quantity-control">
+
+                                        <a href="/user/cart/decrease/{{ pid }}">−</a>
+
+                                        <span>{{ item.quantity }}</span>
+
+                                        <a href="/user/cart/increase/{{ pid }}">+</a>
+
+                                    </div>
+                                </td>
+
+                                <td class="item-total">
+                                    ₹{{ item.price * item.quantity }}
+                                </td>
+
+                                <td>
+                                    <a
+                                        href="/user/cart/remove/{{ pid }}"
+                                        class="remove-btn"
+                                        onclick="return confirm('Remove this product?')"
+                                    >
+                                        <i class="bi bi-trash"></i> Remove
+                                    </a>
+                                </td>
+
+                            </tr>
+
+                            {% endfor %}
+
+                        </tbody>
+
+                    </table>
+
+                </div>
+
+                <div class="cart-summary">
+
+                    <div class="summary-row">
+                        <span>Cart Grand Total</span>
+                        <strong>₹{{ grand_total }}</strong>
+                    </div>
+
+                    <div class="summary-row selected-row">
+                        <span>Selected Products Total</span>
+                        <strong>₹<span id="selectedTotal">0.00</span></strong>
+                    </div>
+
+                    <p class="selection-info" id="selectionInfo">
+                        Select products to calculate your checkout amount.
+                    </p>
+
+                    <button
+                        type="submit"
+                        class="checkout-btn"
+                        id="checkoutButton"
+                        disabled
+                    >
+                        <i class="bi bi-geo-alt"></i>
+                        Add Delivery Address
+                    </button>
+
+                </div>
+
+            </form>
+
+        {% endif %}
+
+    </div>
+
+</div>
+
+<script>
+
+    const checkboxes = document.querySelectorAll('.product-checkbox');
+
+    function calculateSelectedTotal() {
+
+        let total = 0;
+        let count = 0;
+
+        checkboxes.forEach(function(checkbox) {
+
+            if (checkbox.checked) {
+
+                const price = parseFloat(checkbox.dataset.price);
+                const quantity = parseInt(checkbox.dataset.quantity);
+
+                total += price * quantity;
+                count++;
+
+            }
+
+        });
+
+        document.getElementById('selectedTotal').textContent =
+            total.toFixed(2);
+
+        document.getElementById('checkoutButton').disabled =
+            count === 0;
+
+        document.getElementById('selectionInfo').textContent =
+            count > 0
+            ? count + ' product(s) selected for checkout.'
+            : 'Select products to calculate your checkout amount.';
+
+    }
+
+    checkboxes.forEach(function(checkbox) {
+        checkbox.addEventListener('change', calculateSelectedTotal);
+    });
+
+</script>
+
+{% endblock %}
+
